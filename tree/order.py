@@ -1,4 +1,4 @@
-#DFS way of traversing a tree
+ #DFS way of traversing a tree
 class DFS:
 	#create a root node
 	def __init__(self, val):
@@ -26,5 +26,7 @@ class DFS:
 		if self.right:
 			self.right.post_order()
 		print(self.val)
+
+
 	
 	

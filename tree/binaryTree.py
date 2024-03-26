@@ -38,24 +38,24 @@ class Tree:
 #print('Maintains continuity of the tree: ', t1.left.val)
 
 #--------		
-#root = Tree('a')
-#root.insert_left('b')
-#root.insert_right('c')
+root = Tree('a')
+root.insert_left('b')
+root.insert_right('c')
 
-#p1_l = root.left
-#p1_l.insert_right('d')
+p1_l = root.left
+p1_l.insert_right('d')
 
-#p1_r = root.right
-#p1_r.insert_left('e')
-#p1_r.insert_right('f')
+p1_r = root.right
+p1_r.insert_left('e')
+p1_r.insert_right('f')
 #-----------
-root = Tree(1)
-root.insert_left(2)
-root.insert_right(3)
-root.left.insert_left(4)
-root.left.insert_right(5)
-root.right.insert_left(6)
-root.right.insert_right(7)
+
+#root.insert_left(2)
+#root.insert_right(3)
+#root.left.insert_left(4)
+#root.left.insert_right(5)
+#root.right.insert_left(6)
+#root.right.insert_right(7)
 
 
 BFS.bfs(root)
