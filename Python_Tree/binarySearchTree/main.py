@@ -30,7 +30,7 @@ def main():
 
 # ----- Search for an element --------
     s = SEARCH()
-    print(s.find_iterative(tree, 'g'))
+    print(s.find_iterative(tree, 'a'))
 
 if __name__ == '__main__':
     main()
