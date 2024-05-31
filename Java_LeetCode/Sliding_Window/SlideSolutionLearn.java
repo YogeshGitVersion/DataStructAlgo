@@ -68,9 +68,9 @@ class LongestSubstringNotes{
         for (int i = start; i <= end; i++){
             char c = s.charAt(i);
             if ( Character.isLowerCase(c) )
-                lower |= c - 'a';
+                lower |= 1 << ( c - 'a');
             if ( Character.isUpperCase(c) )
-                upper |= c - 'a';
+                upper |= 1 << ( c - 'a');
         }
         return lower == upper;
     }
