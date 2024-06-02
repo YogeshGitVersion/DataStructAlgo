@@ -1,51 +1,33 @@
 package Sliding_Window;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SlideSolution {
     public static void main(String[] args) {
-        System.out.println(longestNiceSubstring("YazaAay"));
-//        System.out.println(longestNiceSubstring("bB"));
+        System.out.println(longestAlternatingSubarray(new int[]{3,2,5,4},5));
     }
 
-    public static String longestNiceSubstring(String s) {
-        String res = "";
-
-        for (int k = 2; k <= s.length(); k++){
-            for (int i = 0; i <= s.length() - k; i++) {
-                String cur = s.substring(i, i + k);
-               if (isNice(cur) && (cur.length() > res.length() ) ){
-                   res = cur;
-               }
-
+    public static int longestAlternatingSubarray(int[] nums, int threshold) {
+        int lonSub = 0, start = 0, end = 0;
+        while ( start < nums.length){
+            // increase window
+            if ( nums[start] % 2 == 0 && nums[start] <= threshold){
+                int curLen = 1;
+                end = start;
+                while ( end+1 < nums.length && nums[end] <= threshold && nums[end+1] <= threshold && nums[end] % 2 != nums[end+1] % 2 ){
+                    end++;
+                    curLen++;
+                }
+                lonSub = Math.max(lonSub, curLen);
+                start = end + 1;
+            }
+            else {
+                start++;
             }
         }
-        return res;
-
+        return lonSub;
     }
 
-    public static boolean isNice(String s) {
-        // Use sets to store lowercase and uppercase characters
-        Set<Character> lower = new HashSet<>();
-        Set<Character> upper = new HashSet<>();
-
-        for (char c : s.toCharArray()) {
-            if (Character.isLowerCase(c)) {
-                lower.add(c);
-            } else if (Character.isUpperCase(c)) {
-                upper.add(c);
-            }
-        }
-
-        // Check if every character in the sets has its counterpart
-        for (char c : s.toCharArray()) {
-            if (Character.isLowerCase(c) && !upper.contains(Character.toUpperCase(c))) {
-                return false;
-            }
-            if (Character.isUpperCase(c) && !lower.contains(Character.toLowerCase(c))) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

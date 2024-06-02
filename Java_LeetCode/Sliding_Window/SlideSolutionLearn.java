@@ -1,5 +1,7 @@
 package Sliding_Window;
 
+import java.util.HashMap;
+
 public class SlideSolutionLearn {
     public static void main(String[] args) {
 //        maxSub(new int[]{1, 2, 3, 1, 4, 5, 2, 3, 6}, 3);
@@ -74,4 +76,29 @@ class LongestSubstringNotes{
         }
         return lower == upper;
     }
+
+    public static int maximumLengthSubstring(String s) {
+        if (s == null || s.isEmpty()) {
+            return 0;
+        }
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        //occurance of char is <=2
+        int maxLen = 0, start = 0;
+        for (int end = 0; end < s.length(); end++){
+            char endChar = s.charAt(end);
+            charCount.put(endChar, charCount.getOrDefault(endChar,0)+1);
+            //occurance of each c <=2)
+            while (charCount.get(endChar) > 2){
+                char startChar = s.charAt(start);
+                charCount.put(startChar, charCount.get(startChar)-1);
+                if (charCount.get(startChar) == 0)
+                    charCount.remove(startChar);
+                start++;
+            }
+            maxLen = Math.max(maxLen, end - start + 1);
+        }
+
+        return maxLen;
+    }
+
 }
