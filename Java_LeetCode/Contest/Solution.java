@@ -1,33 +1,36 @@
 package Contest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class Solution {
     public static void main(String[] args) {
-//        System.out.println(minimumChairs("EEEEEEE"));
-        System.out.println(countDays(10, new int[][]{{5,7},{1,3},{9,10}}));
-//        System.out.println(countDays(5, new int[][]{{2,4},{1,3}}));
-//        System.out.println(countDays(6, new int[][]{{1,6}}));
+        System.out.println(maximumLength(new int[]{1,2,1,1,3},2));
     }
-    public static int countDays(int days, int[][] meetings) {
-        int freeDays = 0;
-        int[] schedule = new int[days];
-        for (int i = 0; i < meetings.length; i++ ){
-            int start = meetings[i][0];
-            int end = meetings[i][1];
-            for (int j = start; j <= end; j++){
-                schedule[j-1]++;
+    public static int maximumLength(int[] nums, int k) {
+        int n = nums.length;
+        int maxLen = 0;
+        int distinctCount = 0;
+        int[] count = new int[100001]; // Assuming the range of nums is within [0, 100000]
+
+        for (int i = 0; i < n; i++) {
+            if (count[nums[i]] == 0) {
+                distinctCount++;
             }
+
+            count[nums[i]]++;
+
+            if (i >= k) {
+                count[nums[i - k]]--;
+                if (count[nums[i - k]] == 0) {
+                    distinctCount--;
+                }
+            }
+
+            maxLen = Math.max(maxLen, distinctCount);
         }
-//        System.out.println(Arrays.toString(schedule));
-//        freeDays = (int) Arrays.stream(schedule).filter(x -> x==0).count();
-        for (int day = 0; day < schedule.length; day++){
-            if(schedule[day] == 0)
-                freeDays++;
-        }
-        return freeDays;
+
+        return maxLen;
     }
+
 }
