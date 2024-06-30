@@ -12,7 +12,7 @@ class Solution {
         return helper(p.left,q.right) && helper(p.right, q.left);
     }
 }
-public class Main {
+public class MainTree {
     public static void main(String[] args) {
         TreeNode tree = new TreeNode(10);
 
