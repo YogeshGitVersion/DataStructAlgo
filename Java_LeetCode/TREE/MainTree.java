@@ -16,6 +16,6 @@ public class MainTree {
     public static void main(String[] args) {
         TreeNode tree = new TreeNode(10);
 
-        System.out.println(tree.getVal());
+
     }
 }

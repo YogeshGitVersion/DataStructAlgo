@@ -2,23 +2,13 @@ package TREE;
 
 public class TreeNode {
     int val;
-    TreeNode left, right;
-
-
-//    public TreeNode(){
-//        this(null,null,null);
-//    }
-//    public TreeNode(Object val){
-//        this(val, null, null);
-//    }
-    public TreeNode(int val){
+    TREE.TreeNode left;
+    TREE.TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TREE.TreeNode left, TREE.TreeNode right) {
         this.val = val;
-    }
-
-    public TreeNode getLeft() {
-        return this.left;
-    }
-    public int getVal(){
-        return this.val;
+        this.left = left;
+        this.right = right;
     }
 }
